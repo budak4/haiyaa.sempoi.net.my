@@ -138,12 +138,35 @@
             color: #00ddeb;
             text-shadow: 0 0 5px rgba(0, 221, 235, 0.8);
         }
+        .share-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .share-buttons button {
+            background: linear-gradient(45deg, #1e90ff, #00ddeb);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 221, 235, 0.5);
+        }
+        .share-buttons button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(0, 221, 235, 0.8);
+        }
         @media (max-width: 600px) {
             .header h1 { font-size: 2em; }
             .header p { font-size: 1em; }
             .calculator { padding: 20px; }
             .calculator h2 { font-size: 1.5em; }
             .result { font-size: 1em; }
+            .share-buttons { flex-direction: column; gap: 10px; }
         }
         @keyframes fadeIn {
             from { opacity: 0; }
@@ -183,6 +206,10 @@
             </div>
             <button onclick="calculateWinrate()">Kira Sekarang</button>
             <div class="result" id="result">Hasil akan dipaparkan di sini</div>
+            <div class="share-buttons">
+                <button onclick="shareToWhatsApp()">Share ke WhatsApp</button>
+                <button onclick="copyToClipboard()">Salin ke Clipboard</button>
+            </div>
         </div>
     </div>
 
@@ -209,6 +236,19 @@
                     `Anda perlu menang ${Math.ceil(winsNeeded)} perlawanan lagi. ` +
                     `Dengan winrate 100%, anda perlu main ${additionalMatches} perlawanan tambahan.`;
             }
+        }
+
+        function shareToWhatsApp() {
+            const result = document.getElementById('result').textContent;
+            const whatsappURL = `https://wa.me/?text=${encodeURIComponent("Hasil Winrate Calculator - Amir Store:\n" + result)}`;
+            window.open(whatsappURL, '_blank');
+        }
+
+        function copyToClipboard() {
+            const result = document.getElementById('result').textContent;
+            navigator.clipboard.writeText("Hasil Winrate Calculator - Amir Store:\n" + result)
+                .then(() => alert("Hasil berjaya disalin ke clipboard!"))
+                .catch(() => alert("Gagal menyalin, sila cuba lagi."));
         }
     </script>
 </body>
