@@ -9,28 +9,23 @@
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
+            background: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhztCbuRHKKjAKIZ1oxfNER2l27tO6gZHi7-bB_784JC41hOlIG2ZZf_ctwVgwQJoRHJ_V4xxZpQuzZbiqvMsKVyXCN_2nl61o54aAi9Gks7E-AjjF5W97MVKNZqriJrTqEt5rdJLox4V8S7ZMopvjISVc4MAonah1iX4WhT2rirLFkQcx7hnj2lcbWTg/w640-h360/kagura-exorcist-skin-wallpaper-hd%20(2).jpg') no-repeat center center;
+            background-size: cover;
+            background-attachment: scroll; /* Background tak gerak masa scroll */
             color: #fff;
             overflow-x: hidden;
             position: relative;
+            min-height: 100vh;
         }
-        .background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhztCbuRHKKjAKIZ1oxfNER2l27tO6gZHi7-bB_784JC41hOlIG2ZZf_ctwVgwQJoRHJ_V4xxZpQuzZbiqvMsKVyXCN_2nl61o54aAi9Gks7E-AjjF5W97MVKNZqriJrTqEt5rdJLox4V8S7ZMopvjISVc4MAonah1iX4WhT2rirLFkQcx7hnj2lcbWTg/w640-h360/kagura-exorcist-skin-wallpaper-hd%20(2).jpg') no-repeat center center;
-            background-size: cover;
-            filter: blur(5px);
-            z-index: -2;
-        }
-        .overlay {
+        body::before {
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0.4);
+            filter: blur(5px);
             z-index: -1;
         }
         .container {
@@ -245,8 +240,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="background"></div>
-    <div class="overlay"></div>
     <div class="container">
         <div class="header">
             <h1>Amir Store</h1>
@@ -269,27 +262,27 @@
 
         <div class="price-list">
             <div class="price-card">
-                <img src="https://i.imgur.com/6Q5Qz7g.png" alt="Epic Icon">
+                <img src="https://rapspoint.com/assets/joki/epic.webp" alt="Epic Icon">
                 <h3>Epic</h3>
                 <p>RM3 / Star</p>
             </div>
             <div class="price-card">
-                <img src="https://i.imgur.com/8vX6z8t.png" alt="Legend Icon">
+                <img src="https://rapspoint.com/assets/joki/legend.webp" alt="Legend Icon">
                 <h3>Legend</h3>
                 <p>RM3.50 / Star</p>
             </div>
             <div class="price-card">
-                <img src="https://i.imgur.com/0rX5z5P.png" alt="Mythic Icon">
+                <img src="https://rapspoint.com/assets/joki/mythic.webp" alt="Mythic Icon">
                 <h3>Mythic</h3>
                 <p>RM5 / Star</p>
             </div>
             <div class="price-card">
-                <img src="https://i.imgur.com/9vY7z5P.png" alt="Mythic Honor Icon">
+                <img src="https://rapspoint.com/assets/joki/mythical-honor.webp" alt="Mythic Honor Icon">
                 <h3>Mythic Honor</h3>
                 <p>RM6 / Star</p>
             </div>
             <div class="price-card">
-                <img src="https://i.imgur.com/4rX5z5P.png" alt="Mythic Glory Icon">
+                <img src="https://rapspoint.com/assets/joki/mythical-glory.webp" alt="Mythic Glory Icon">
                 <h3>Mythic Glory</h3>
                 <p>RM7 / Star</p>
             </div>
