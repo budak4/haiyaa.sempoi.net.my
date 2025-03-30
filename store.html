@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amir Store - Winrate Calculator</title>
+    <title>Amir Store - Jasa Joki MLBB 2025</title>
     <style>
         body {
             font-family: 'Poppins', sans-serif;
@@ -68,7 +68,83 @@
             transform: scale(1.05);
             box-shadow: 0 0 20px rgba(0, 221, 235, 0.8);
         }
-        .calculator {
+        .promo {
+            margin: 20px 0;
+            text-align: center;
+            padding: 15px;
+            background: rgba(255, 215, 0, 0.2);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+            border: 1px solid #ffd700;
+        }
+        .promo p {
+            margin: 0;
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #fff;
+            text-shadow: 0 0 5px rgba(255, 215, 0, 0.8);
+        }
+        .features {
+            margin: 20px 0;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            border: 2px solid #00ddeb;
+            text-align: left;
+        }
+        .features ul {
+            list-style: none;
+            padding: 0;
+        }
+        .features li {
+            font-size: 1.1em;
+            margin: 10px 0;
+            font-weight: 500;
+            color: #fff;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+        }
+        .price-list {
+            margin: 40px 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+        }
+        .price-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border: 1px solid #00ddeb;
+        }
+        .price-card:hover {
+            transform: translateY(-10px);
+            background: rgba(0, 221, 235, 0.3);
+            box-shadow: 0 10px 25px rgba(0, 221, 235, 0.6);
+        }
+        .price-card img {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 10px;
+        }
+        .price-card h3 {
+            margin: 0;
+            font-size: 1.4em;
+            font-weight: 600;
+            color: #00ddeb;
+            text-shadow: 0 0 5px rgba(0, 221, 235, 0.8);
+        }
+        .price-card p {
+            margin: 10px 0 0;
+            font-size: 1.2em;
+            font-weight: 500;
+            color: #fff;
+        }
+        .order-form {
             background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(10px);
             padding: 30px;
@@ -77,7 +153,7 @@
             animation: slideUp 1.2s ease-in;
             border: 2px solid #00ddeb;
         }
-        .calculator h2 {
+        .order-form h2 {
             color: #00ddeb;
             font-size: 2em;
             font-weight: 700;
@@ -85,19 +161,23 @@
             margin-bottom: 20px;
             text-shadow: 0 0 10px rgba(0, 221, 235, 0.8);
         }
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
         .form-group {
             display: flex;
             flex-direction: column;
-            margin-bottom: 20px;
         }
-        .calculator label {
+        .order-form label {
             margin-bottom: 5px;
             font-size: 1em;
             font-weight: 500;
             color: #fff;
             text-shadow: 0 0 3px rgba(255, 255, 255, 0.5);
         }
-        .calculator input {
+        .order-form input, .order-form select {
             padding: 12px;
             border: none;
             border-radius: 10px;
@@ -107,12 +187,12 @@
             transition: all 0.3s ease;
             box-shadow: 0 0 5px rgba(0, 221, 235, 0.3);
         }
-        .calculator input:focus {
+        .order-form input:focus, .order-form select:focus {
             outline: none;
             background: rgba(255, 255, 255, 0.35);
             box-shadow: 0 0 10px rgba(0, 221, 235, 0.7);
         }
-        .calculator button {
+        .order-form button {
             background: linear-gradient(45deg, #1e90ff, #00ddeb);
             color: white;
             padding: 15px;
@@ -126,11 +206,11 @@
             width: 100%;
             box-shadow: 0 5px 15px rgba(0, 221, 235, 0.5);
         }
-        .calculator button:hover {
+        .order-form button:hover {
             transform: scale(1.05);
             box-shadow: 0 0 20px rgba(0, 221, 235, 0.8);
         }
-        .result {
+        .total-price {
             margin-top: 20px;
             text-align: center;
             font-size: 1.2em;
@@ -138,12 +218,30 @@
             color: #00ddeb;
             text-shadow: 0 0 5px rgba(0, 221, 235, 0.8);
         }
+        .payment {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .payment p {
+            margin: 5px 0;
+            font-size: 1em;
+            font-weight: 500;
+            color: #ddd;
+            text-shadow: 0 0 3px rgba(255, 255, 255, 0.5);
+        }
         @media (max-width: 600px) {
             .header h1 { font-size: 2em; }
             .header p { font-size: 1em; }
-            .calculator { padding: 20px; }
-            .calculator h2 { font-size: 1.5em; }
-            .result { font-size: 1em; }
+            .promo p { font-size: 1em; }
+            .features li { font-size: 1em; }
+            .price-card { padding: 15px; }
+            .price-card img { width: 40px; height: 40px; }
+            .price-card h3 { font-size: 1.2em; }
+            .price-card p { font-size: 1em; }
+            .form-grid { grid-template-columns: 1fr; }
+            .order-form { padding: 20px; }
+            .order-form h2 { font-size: 1.5em; }
+            .total-price { font-size: 1em; }
         }
         @keyframes fadeIn {
             from { opacity: 0; }
@@ -160,55 +258,144 @@
     <div class="container">
         <div class="header">
             <h1>Amir Store</h1>
-            <p>Winrate Calculator - Kira Kemenangan Anda!</p>
+            <p>Jasa Joki MLBB Terbaik 2025 - Naik Rank, Pantas & Murah!</p>
         </div>
 
         <div class="nav-button">
-            <a href="index.html">Kembali ke Jasa Joki</a>
+            <a href="wrcalculator.html">Winrate Calculator</a>
         </div>
 
-        <div class="calculator">
-            <h2>Winrate Calculator</h2>
-            <div class="form-group">
-                <label for="current-matches">Your Current Number Of Matches (E.g. 350):</label>
-                <input type="number" id="current-matches" min="0" placeholder="Masukkan jumlah perlawanan" required>
+        <div class="promo">
+            <p>🌟 Promo Awal Season: Diskaun 10% untuk 5 pelanggan pertama setiap minggu! 🌟</p>
+        </div>
+
+        <div class="features">
+            <ul>
+                <li>✅ 100% Safe, Anti GB</li>
+                <li>✅ Free Request 3 Hero</li>
+                <li>✅ Tak Pakai Cheat/Bug/Bot</li>
+                <li>✅ Proses Pantas & Selamat</li>
+                <li>✅ Extra Random MVP/Winstreak</li>
+            </ul>
+        </div>
+
+        <div class="price-list">
+            <div class="price-card">
+                <img src="https://rapspoint.com/assets/joki/epic.webp" alt="Epic Icon">
+                <h3>Epic</h3>
+                <p>RM3 / Star</p>
             </div>
-            <div class="form-group">
-                <label for="current-winrate">Your Current Win Rate (%) (E.g. 50):</label>
-                <input type="number" id="current-winrate" min="0" max="100" placeholder="Masukkan winrate semasa" required>
+            <div class="price-card">
+                <img src="https://rapspoint.com/assets/joki/legend.webp" alt="Legend Icon">
+                <h3>Legend</h3>
+                <p>RM3.50 / Star</p>
             </div>
-            <div class="form-group">
-                <label for="desired-winrate">Your Desired Win Rate (%) (E.g. 80):</label>
-                <input type="number" id="desired-winrate" min="0" max="100" placeholder="Masukkan winrate yang diingini" required>
+            <div class="price-card">
+                <img src="https://rapspoint.com/assets/joki/mythic.webp" alt="Mythic Icon">
+                <h3>Mythic</h3>
+                <p>RM5 / Star</p>
             </div>
-            <button onclick="calculateWinrate()">Kira Sekarang</button>
-            <div class="result" id="result">Hasil akan dipaparkan di sini</div>
+            <div class="price-card">
+                <img src="https://rapspoint.com/assets/joki/mythical-honor.webp" alt="Mythic Honor Icon">
+                <h3>Mythic Honor</h3>
+                <p>RM6 / Star</p>
+            </div>
+            <div class="price-card">
+                <img src="https://rapspoint.com/assets/joki/mythical-glory.webp" alt="Mythic Glory Icon">
+                <h3>Mythic Glory</h3>
+                <p>RM7 / Star</p>
+            </div>
+        </div>
+
+        <div class="order-form">
+            <h2>Order Sekarang</h2>
+            <form id="orderForm" onsubmit="sendToWhatsApp(event)">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="name">Nama:</label>
+                        <input type="text" id="name" name="name" required placeholder="Masukkan nama anda">
+                    </div>
+                    <div class="form-group">
+                        <label for="ign">IGN (In-Game Name):</label>
+                        <input type="text" id="ign" name="ign" required placeholder="Nama di MLBB">
+                    </div>
+                    <div class="form-group">
+                        <label for="rank">Pilih Rank:</label>
+                        <select id="rank" name="rank" required onchange="calculateTotal()">
+                            <option value="">-- Pilih Rank --</option>
+                            <option value="Epic - RM3/Star">Epic - RM3/Star</option>
+                            <option value="Legend - RM3.50/Star">Legend - RM3.50/Star</option>
+                            <option value="Mythic - RM5/Star">Mythic - RM5/Star</option>
+                            <option value="Mythic Honor - RM6/Star">Mythic Honor - RM6/Star</option>
+                            <option value="Mythic Glory - RM7/Star">Mythic Glory - RM7/Star</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="stars">Jumlah Star:</label>
+                        <input type="number" id="stars" name="stars" min="1" required placeholder="Berapa star?" oninput="calculateTotal()">
+                    </div>
+                    <div class="form-group">
+                        <label for="payment-method">Via Pembayaran:</label>
+                        <select id="payment-method" name="payment-method" required>
+                            <option value="">-- Pilih Kaedah --</option>
+                            <option value="PayPal">PayPal</option>
+                            <option value="QRIS">QRIS</option>
+                            <option value="Touch 'n Go">Touch 'n Go</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="note">Catatan (Opsional):</label>
+                    <input type="text" id="note" name="note" placeholder="Contoh: Main pake hero Fanny">
+                </div>
+                <div class="total-price" id="totalPrice">Total Harga: RM0</div>
+                <button type="submit">Hantar Pesanan</button>
+            </form>
+            <div class="payment">
+                <p>Pembayaran melalui:</p>
+                <p>PayPal | QRIS | Touch 'n Go</p>
+            </div>
         </div>
     </div>
 
     <script>
-        function calculateWinrate() {
-            const matches = parseInt(document.getElementById('current-matches').value);
-            const currentWR = parseFloat(document.getElementById('current-winrate').value);
-            const desiredWR = parseFloat(document.getElementById('desired-winrate').value);
+        function calculateTotal() {
+            const rank = document.getElementById('rank').value;
+            const stars = document.getElementById('stars').value;
+            let pricePerStar = 0;
 
-            if (!matches || !currentWR || !desiredWR || currentWR > 100 || desiredWR > 100) {
-                document.getElementById('result').textContent = "Sila masukkan nilai yang sah!";
-                return;
-            }
+            if (rank === "Epic - RM3/Star") pricePerStar = 3;
+            else if (rank === "Legend - RM3.50/Star") pricePerStar = 3.50;
+            else if (rank === "Mythic - RM5/Star") pricePerStar = 5;
+            else if (rank === "Mythic Honor - RM6/Star") pricePerStar = 6;
+            else if (rank === "Mythic Glory - RM7/Star") pricePerStar = 7;
 
-            const currentWins = (currentWR / 100) * matches;
-            const requiredWins = (desiredWR / 100) * matches;
-            const winsNeeded = requiredWins - currentWins;
-            const additionalMatches = Math.ceil((winsNeeded * 100) / (100 - desiredWR));
+            const total = stars ? (pricePerStar * stars).toFixed(2) : 0;
+            document.getElementById('totalPrice').textContent = `Total Harga: RM${total}`;
+        }
 
-            if (winsNeeded <= 0) {
-                document.getElementById('result').textContent = "Winrate anda sudah mencapai atau melebihi yang diingini!";
-            } else {
-                document.getElementById('result').textContent = 
-                    `Anda perlu menang ${Math.ceil(winsNeeded)} perlawanan lagi. ` +
-                    `Dengan winrate 100%, anda perlu main ${additionalMatches} perlawanan tambahan.`;
-            }
+        function sendToWhatsApp(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const ign = document.getElementById('ign').value;
+            const rank = document.getElementById('rank').value;
+            const stars = document.getElementById('stars').value;
+            const paymentMethod = document.getElementById('payment-method').value;
+            const note = document.getElementById('note').value;
+            const total = document.getElementById('totalPrice').textContent.split('RM')[1];
+
+            const message = `*Pesanan Joki MLBB - Amir Store*\n` +
+                            `Nama: ${name}\n` +
+                            `IGN: ${ign}\n` +
+                            `Rank: ${rank}\n` +
+                            `Jumlah Star: ${stars}\n` +
+                            `Via Pembayaran: ${paymentMethod}\n` +
+                            `Total Harga: RM${total}\n` +
+                            `Catatan: ${note || 'Tiada'}`;
+
+            const whatsappNumber = "+60104624558";
+            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappURL, '_blank');
         }
     </script>
 </body>
