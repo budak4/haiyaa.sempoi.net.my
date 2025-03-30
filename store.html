@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AmirStore - Jasa Joki MLBB 2025</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('https://i.pinimg.com/originals/58/17/59/581759f9d27aafe279c73585f62e0db5.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            overflow-x: hidden;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .header {
+            text-align: center;
+            padding: 50px 20px;
+            background: linear-gradient(45deg, rgba(30, 144, 255, 0.8), rgba(0, 221, 235, 0.8));
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 1s ease-in;
+        }
+        .header h1 {
+            font-size: 3em;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        }
+        .header p {
+            font-size: 1.2em;
+            margin: 10px 0 0;
+            opacity: 0.9;
+        }
+        .price-list {
+            margin: 40px 0;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            animation: slideUp 1s ease-in;
+        }
+        .price-list h2 {
+            color: #00ddeb;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        .price-list ul {
+            list-style: none;
+            padding: 0;
+        }
+        .price-list li {
+            padding: 15px;
+            font-size: 1.1em;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        .price-list li:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateX(10px);
+        }
+        .order-form {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            animation: slideUp 1.2s ease-in;
+        }
+        .order-form h2 {
+            color: #00ddeb;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        .order-form label {
+            display: block;
+            margin: 15px 0 5px;
+            font-size: 1.1em;
+            color: #fff;
+        }
+        .order-form input, .order-form select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.25);
+            color: #fff;
+            font-size: 1em;
+            transition: all 0.3s ease;
+        }
+        .order-form input:focus, .order-form select:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.35);
+            box-shadow: 0 0 10px rgba(0, 221, 235, 0.5);
+        }
+        .order-form button {
+            background: linear-gradient(45deg, #1e90ff, #00ddeb);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .order-form button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(0, 221, 235, 0.7);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>AmirStore</h1>
+            <p>Jasa Joki MLBB Terbaik 2025 - Naik Rank, Pantas & Murah!</p>
+        </div>
+
+        <div class="price-list">
+            <h2>Katalog Harga</h2>
+            <ul>
+                <li>Epic - RM3 / Star</li>
+                <li>Legend - RM3.50 / Star</li>
+                <li>Mythic - RM5 / Star</li>
+                <li>Mythic Honor - RM6 / Star</li>
+                <li>Mythic Glory - RM7 / Star</li>
+            </ul>
+        </div>
+
+        <div class="order-form">
+            <h2>Order Sekarang</h2>
+            <form id="orderForm" onsubmit="sendToWhatsApp(event)">
+                <label for="name">Nama:</label>
+                <input type="text" id="name" name="name" required placeholder="Masukkan nama anda">
+
+                <label for="ign">IGN (In-Game Name):</label>
+                <input type="text" id="ign" name="ign" required placeholder="Nama di MLBB">
+
+                <label for="rank">Pilih Rank:</label>
+                <select id="rank" name="rank" required>
+                    <option value="">-- Pilih Rank --</option>
+                    <option value="Epic - RM3/Star">Epic - RM3/Star</option>
+                    <option value="Legend - RM3.50/Star">Legend - RM3.50/Star</option>
+                    <option value="Mythic - RM5/Star">Mythic - RM5/Star</option>
+                    <option value="Mythic Honor - RM6/Star">Mythic Honor - RM6/Star</option>
+                    <option value="Mythic Glory - RM7/Star">Mythic Glory - RM7/Star</option>
+                </select>
+
+                <label for="stars">Jumlah Star:</label>
+                <input type="number" id="stars" name="stars" min="1" required placeholder="Berapa star?">
+
+                <label for="note">Catatan (Opsional):</label>
+                <input type="text" id="note" name="note" placeholder="Contoh: Main pake hero Fanny">
+
+                <button type="submit">Hantar Pesanan</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function sendToWhatsApp(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const ign = document.getElementById('ign').value;
+            const rank = document.getElementById('rank').value;
+            const stars = document.getElementById('stars').value;
+            const note = document.getElementById('note').value;
+
+            const message = `*Pesanan Joki MLBB - AmirStore*\n` +
+                            `Nama: ${name}\n` +
+                            `IGN: ${ign}\n` +
+                            `Rank: ${rank}\n` +
+                            `Jumlah Star: ${stars}\n` +
+                            `Catatan: ${note || 'Tiada'}`;
+
+            const whatsappNumber = "+60104624558";
+            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappURL, '_blank');
+        }
+    </script>
+</body>
+</html>
