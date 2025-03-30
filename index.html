@@ -1,1 +1,318 @@
-  <script language="JavaScript">alert("#savepalestine");</script>
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popia Burgerdil Ramadan</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f0f7f4;
+            color: #2d3436;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            background-color: #219653;
+            padding: 1.5rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .navbar h1 {
+            color: #ffeaa7;
+            text-align: center;
+            font-size: 2rem;
+            text-transform: uppercase;
+        }
+
+        .hero {
+            margin-top: 100px;
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #ffeaa7, #fad390);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/arabesque.png');
+            opacity: 0.3;
+        }
+
+        .hero h2 {
+            color: #d63031;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .products {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            color: #219653;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card p {
+            font-weight: bold;
+            color: #d63031;
+        }
+
+        .card button {
+            background-color: #219653;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            margin-top: 1rem;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .card button:hover {
+            background-color: #1c7d44;
+        }
+
+        .order-section {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 3rem;
+            background: linear-gradient(135deg, #ffffff, #f0f7f4);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .order-section h2 {
+            color: #d63031;
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #219653;
+            font-weight: bold;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            border-color: #219653;
+            outline: none;
+        }
+
+        .submit-btn {
+            background-color: #d63031;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: #b52626;
+        }
+
+        .footer {
+            background-color: #2d3436;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+            font-size: 1.1rem;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease forwards;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h1>Popia Burgerdil Ramadan</h1>
+    </div>
+
+    <div class="hero">
+        <h2>Selamat Menyambut Ramadan & Hari Raya!</h2>
+        <p>Nikmati Popia Burgerdil Istimewa untuk Berbuka Puasa dan Sambutan Hari Raya Bersama Keluarga</p>
+    </div>
+
+    <div class="products" id="product-list">
+        <div class="card fade-in">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Popia Klasik">
+            <h3>Popia Burgerdil Klasik</h3>
+            <p>RM 5.00</p>
+            <button onclick="addToCart('Popia Burgerdil Klasik', 5.00)">Tambah ke Troli</button>
+        </div>
+        <div class="card fade-in">
+            <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Popia Pedas">
+            <h3>Popia Burgerdil Pedas</h3>
+            <p>RM 6.00</p>
+            <button onclick="addToCart('Popia Burgerdil Pedas', 6.00)">Tambah ke Troli</button>
+        </div>
+        <div class="card fade-in">
+            <img src="https://images.unsplash.com/photo-1571066819795-7e1e6bdf5a20?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Popia Keju">
+            <h3>Popia Burgerdil Keju</h3>
+            <p>RM 7.00</p>
+            <button onclick="addToCart('Popia Burgerdil Keju', 7.00)">Tambah ke Troli</button>
+        </div>
+    </div>
+
+    <div class="order-section fade-in">
+        <h2>Borang Pesanan Ramadan</h2>
+        <form id="orderForm">
+            <div class="form-group">
+                <label for="name">Nama Penuh:</label>
+                <input type="text" id="name" required placeholder="Masukkan nama anda">
+            </div>
+            <div class="form-group">
+                <label for="phone">Nombor Telefon:</label>
+                <input type="tel" id="phone" required placeholder="Contoh: 0123456789">
+            </div>
+            <div class="form-group">
+                <label for="address">Alamat Penghantaran:</label>
+                <textarea id="address" required placeholder="Masukkan alamat lengkap"></textarea>
+            </div>
+            <div class="form-group">
+                <label>Pilih Produk:</label>
+                <select id="product" required>
+                    <option value="">Pilih Popia Burgerdil</option>
+                    <option value="Popia Burgerdil Klasik - RM 5.00">Popia Burgerdil Klasik - RM 5.00</option>
+                    <option value="Popia Burgerdil Pedas - RM 6.00">Popia Burgerdil Pedas - RM 6.00</option>
+                    <option value="Popia Burgerdil Keju - RM 7.00">Popia Burgerdil Keju - RM 7.00</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="quantity">Kuantiti:</label>
+                <input type="number" id="quantity" min="1" required placeholder="Masukkan bilangan">
+            </div>
+            <button type="submit" class="submit-btn">Hantar Pesanan ke WhatsApp</button>
+        </form>
+    </div>
+
+    <div class="footer">
+        <p>Hubungi kami: 012-3456789 | Email: popiaburgerdil@email.com</p>
+    </div>
+
+    <script>
+        let cart = [];
+
+        function addToCart(productName, price) {
+            cart.push({ name: productName, price: price });
+            alert(`${productName} telah ditambah ke troli! Jumlah dalam troli: ${cart.length}`);
+            const total = cart.reduce((sum, item) => sum + item.price, 0);
+            console.log(`Jumlah harga semasa: RM ${total.toFixed(2)}`);
+        }
+
+        document.getElementById('orderForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const address = document.getElementById('address').value;
+            const product = document.getElementById('product').value;
+            const quantity = document.getElementById('quantity').value;
+
+            const message = `*Pesanan Popia Burgerdil Ramadan*\n\n` +
+                           `Nama: ${name}\n` +
+                           `Telefon: ${phone}\n` +
+                           `Alamat: ${address}\n` +
+                           `Produk: ${product}\n` +
+                           `Kuantiti: ${quantity}\n` +
+                           `Jumlah: RM ${(parseFloat(product.split('RM ')[1]) * quantity).toFixed(2)}`;
+
+            const whatsappUrl = `https://wa.me/+60104624558?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+
+            document.getElementById('orderForm').reset();
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const elements = document.querySelectorAll('.fade-in');
+            elements.forEach((el, index) => {
+                setTimeout(() => {
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }, index * 200);
+            });
+        });
+    </script>
+</body>
+</html>
