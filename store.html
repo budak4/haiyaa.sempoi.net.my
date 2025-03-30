@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AmirStore - Jasa Joki MLBB 2025</title>
+    <title>Amir Store - Jasa Joki MLBB 2025</title>
     <style>
         body {
             font-family: 'Poppins', sans-serif;
@@ -22,8 +22,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.4); /* Overlay gelap untuk kontras */
-            filter: blur(5px); /* Blur sikit */
+            background: rgba(0, 0, 0, 0.4);
+            filter: blur(5px);
             z-index: -1;
         }
         .container {
@@ -36,24 +36,66 @@
         .header {
             text-align: center;
             padding: 50px 20px;
-            background: linear-gradient(45deg, rgba(30, 144, 255, 0.8), rgba(0, 221, 235, 0.8));
+            background: linear-gradient(45deg, rgba(30, 144, 255, 0.9), rgba(0, 221, 235, 0.9));
             border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
             animation: fadeIn 1s ease-in;
+            border: 2px solid #00ddeb;
         }
         .header h1 {
-            font-size: 2.5em;
+            font-size: 3em;
+            font-weight: 700;
             margin: 0;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            letter-spacing: 3px;
+            background: linear-gradient(45deg, #fff, #00ddeb);
+            -webkit-background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
         }
         .header p {
-            font-size: 1.1em;
+            font-size: 1.2em;
             margin: 10px 0 0;
             opacity: 0.9;
+            font-weight: 500;
         }
-        /* Katalog */
+        .promo {
+            margin: 20px 0;
+            text-align: center;
+            padding: 15px;
+            background: rgba(255, 215, 0, 0.2);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+            border: 1px solid #ffd700;
+        }
+        .promo p {
+            margin: 0;
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #fff;
+            text-shadow: 0 0 5px rgba(255, 215, 0, 0.8);
+        }
+        .features {
+            margin: 20px 0;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            border: 2px solid #00ddeb;
+            text-align: left;
+        }
+        .features ul {
+            list-style: none;
+            padding: 0;
+        }
+        .features li {
+            font-size: 1.1em;
+            margin: 10px 0;
+            font-weight: 500;
+            color: #fff;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+        }
         .price-list {
             margin: 40px 0;
             display: grid;
@@ -68,36 +110,42 @@
             text-align: center;
             transition: all 0.3s ease;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border: 1px solid #00ddeb;
         }
         .price-card:hover {
             transform: translateY(-10px);
-            background: rgba(0, 221, 235, 0.2);
-            box-shadow: 0 10px 25px rgba(0, 221, 235, 0.5);
+            background: rgba(0, 221, 235, 0.3);
+            box-shadow: 0 10px 25px rgba(0, 221, 235, 0.6);
         }
         .price-card h3 {
             margin: 0;
-            font-size: 1.3em;
+            font-size: 1.4em;
+            font-weight: 600;
             color: #00ddeb;
+            text-shadow: 0 0 5px rgba(0, 221, 235, 0.8);
         }
         .price-card p {
             margin: 10px 0 0;
-            font-size: 1.1em;
+            font-size: 1.2em;
+            font-weight: 500;
             color: #fff;
         }
-        /* Order Form */
         .order-form {
             background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(10px);
             padding: 30px;
             border-radius: 20px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
             animation: slideUp 1.2s ease-in;
+            border: 2px solid #00ddeb;
         }
         .order-form h2 {
             color: #00ddeb;
             font-size: 2em;
+            font-weight: 700;
             text-align: center;
             margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(0, 221, 235, 0.8);
         }
         .form-grid {
             display: grid;
@@ -111,7 +159,9 @@
         .order-form label {
             margin-bottom: 5px;
             font-size: 1em;
+            font-weight: 500;
             color: #fff;
+            text-shadow: 0 0 3px rgba(255, 255, 255, 0.5);
         }
         .order-form input, .order-form select {
             padding: 12px;
@@ -121,11 +171,12 @@
             color: #fff;
             font-size: 1em;
             transition: all 0.3s ease;
+            box-shadow: 0 0 5px rgba(0, 221, 235, 0.3);
         }
         .order-form input:focus, .order-form select:focus {
             outline: none;
             background: rgba(255, 255, 255, 0.35);
-            box-shadow: 0 0 10px rgba(0, 221, 235, 0.5);
+            box-shadow: 0 0 10px rgba(0, 221, 235, 0.7);
         }
         .order-form button {
             background: linear-gradient(45deg, #1e90ff, #00ddeb);
@@ -134,21 +185,36 @@
             border: none;
             border-radius: 10px;
             font-size: 1.2em;
+            font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
             margin-top: 20px;
             width: 100%;
+            box-shadow: 0 5px 15px rgba(0, 221, 235, 0.5);
         }
         .order-form button:hover {
             transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(0, 221, 235, 0.7);
+            box-shadow: 0 0 20px rgba(0, 221, 235, 0.8);
+        }
+        .payment {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .payment p {
+            margin: 5px 0;
+            font-size: 1em;
+            font-weight: 500;
+            color: #ddd;
+            text-shadow: 0 0 3px rgba(255, 255, 255, 0.5);
         }
         /* Responsif */
         @media (max-width: 600px) {
             .header h1 { font-size: 2em; }
             .header p { font-size: 1em; }
+            .promo p { font-size: 1em; }
+            .features li { font-size: 1em; }
             .price-card { padding: 15px; }
-            .price-card h3 { font-size: 1.1em; }
+            .price-card h3 { font-size: 1.2em; }
             .price-card p { font-size: 1em; }
             .form-grid { grid-template-columns: 1fr; }
             .order-form { padding: 20px; }
@@ -163,13 +229,27 @@
             to { transform: translateY(0); opacity: 1; }
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>AmirStore</h1>
+            <h1>Amir Store</h1>
             <p>Jasa Joki MLBB Terbaik 2025 - Naik Rank, Pantas & Murah!</p>
+        </div>
+
+        <div class="promo">
+            <p>🌟 Promo Awal Season: Diskaun 10% untuk 5 pelanggan pertama setiap minggu! 🌟</p>
+        </div>
+
+        <div class="features">
+            <ul>
+                <li>✅ 100% Safe, Anti GB</li>
+                <li>✅ Free Request 3 Hero</li>
+                <li>✅ Tak Pakai Cheat/Bug/Bot</li>
+                <li>✅ Proses Pantas & Selamat</li>
+                <li>✅ Extra Random MVP/Winstreak</li>
+            </ul>
         </div>
 
         <div class="price-list">
@@ -229,6 +309,10 @@
                 </div>
                 <button type="submit">Hantar Pesanan</button>
             </form>
+            <div class="payment">
+                <p>Pembayaran melalui:</p>
+                <p>PayPal | QRIS | Touch 'n Go</p>
+            </div>
         </div>
     </div>
 
@@ -241,7 +325,7 @@
             const stars = document.getElementById('stars').value;
             const note = document.getElementById('note').value;
 
-            const message = `*Pesanan Joki MLBB - AmirStore*\n` +
+            const message = `*Pesanan Joki MLBB - Amir Store*\n` +
                             `Nama: ${name}\n` +
                             `IGN: ${ign}\n` +
                             `Rank: ${rank}\n` +
