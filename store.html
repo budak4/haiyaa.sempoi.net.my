@@ -9,24 +9,10 @@
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            background: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhztCbuRHKKjAKIZ1oxfNER2l27tO6gZHi7-bB_784JC41hOlIG2ZZf_ctwVgwQJoRHJ_V4xxZpQuzZbiqvMsKVyXCN_2nl61o54aAi9Gks7E-AjjF5W97MVKNZqriJrTqEt5rdJLox4V8S7ZMopvjISVc4MAonah1iX4WhT2rirLFkQcx7hnj2lcbWTg/w640-h360/kagura-exorcist-skin-wallpaper-hd%20(2).jpg') no-repeat center center;
-            background-size: cover;
-            background-attachment: scroll; /* Background tak gerak masa scroll */
+            background: linear-gradient(135deg, #0f172a, #1e293b); /* Biru tua moden dengan gradient */
             color: #fff;
             overflow-x: hidden;
-            position: relative;
             min-height: 100vh;
-        }
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.4);
-            filter: blur(5px);
-            z-index: -1;
         }
         .container {
             max-width: 900px;
@@ -203,6 +189,14 @@
             transform: scale(1.05);
             box-shadow: 0 0 20px rgba(0, 221, 235, 0.8);
         }
+        .total-price {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #00ddeb;
+            text-shadow: 0 0 5px rgba(0, 221, 235, 0.8);
+        }
         .payment {
             margin-top: 20px;
             text-align: center;
@@ -227,6 +221,7 @@
             .form-grid { grid-template-columns: 1fr; }
             .order-form { padding: 20px; }
             .order-form h2 { font-size: 1.5em; }
+            .total-price { font-size: 1em; }
         }
         @keyframes fadeIn {
             from { opacity: 0; }
@@ -243,7 +238,7 @@
     <div class="container">
         <div class="header">
             <h1>Amir Store</h1>
-            <p>Jasa Joki MLBB Terbaik 2025 - Naik Rank, Pantas & Murah!</p>
+            <p>Jasa Joki MLBB Terbaik 2025 - Naik Rank, Asc Pantas & Murah!</p>
         </div>
 
         <div class="promo">
@@ -302,7 +297,7 @@
                     </div>
                     <div class="form-group">
                         <label for="rank">Pilih Rank:</label>
-                        <select id="rank" name="rank" required>
+                        <select id="rank" name="rank" required onchange="calculateTotal()">
                             <option value="">-- Pilih Rank --</option>
                             <option value="Epic - RM3/Star">Epic - RM3/Star</option>
                             <option value="Legend - RM3.50/Star">Legend - RM3.50/Star</option>
@@ -313,13 +308,23 @@
                     </div>
                     <div class="form-group">
                         <label for="stars">Jumlah Star:</label>
-                        <input type="number" id="stars" name="stars" min="1" required placeholder="Berapa star?">
+                        <input type="number" id="stars" name="stars" min="1" required placeholder="Berapa star?" oninput="calculateTotal()">
+                    </div>
+                    <div class="form-group">
+                        <label for="payment-method">Via Pembayaran:</label>
+                        <select id="payment-method" name="payment-method" required>
+                            <option value="">-- Pilih Kaedah --</option>
+                            <option value="PayPal">PayPal</option>
+                            <option value="QRIS">QRIS</option>
+                            <option value="Touch 'n Go">Touch 'n Go</option>
+                        </select>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="note">Catatan (Opsional):</label>
                     <input type="text" id="note" name="note" placeholder="Contoh: Main pake hero Fanny">
                 </div>
+                <div class="total-price" id="totalPrice">Total Harga: RM0</div>
                 <button type="submit">Hantar Pesanan</button>
             </form>
             <div class="payment">
@@ -330,19 +335,38 @@
     </div>
 
     <script>
+        function calculateTotal() {
+            const rank = document.getElementById('rank').value;
+            const stars = document.getElementById('stars').value;
+            let pricePerStar = 0;
+
+            if (rank === "Epic - RM3/Star") pricePerStar = 3;
+            else if (rank === "Legend - RM3.50/Star") pricePerStar = 3.50;
+            else if (rank === "Mythic - RM5/Star") pricePerStar = 5;
+            else if (rank === "Mythic Honor - RM6/Star") pricePerStar = 6;
+            else if (rank === "Mythic Glory - RM7/Star") pricePerStar = 7;
+
+            const total = stars ? (pricePerStar * stars).toFixed(2) : 0;
+            document.getElementById('totalPrice').textContent = `Total Harga: RM${total}`;
+        }
+
         function sendToWhatsApp(event) {
             event.preventDefault();
             const name = document.getElementById('name').value;
             const ign = document.getElementById('ign').value;
             const rank = document.getElementById('rank').value;
             const stars = document.getElementById('stars').value;
+            const paymentMethod = document.getElementById('payment-method').value;
             const note = document.getElementById('note').value;
+            const total = document.getElementById('totalPrice').textContent.split('RM')[1];
 
             const message = `*Pesanan Joki MLBB - Amir Store*\n` +
                             `Nama: ${name}\n` +
                             `IGN: ${ign}\n` +
                             `Rank: ${rank}\n` +
                             `Jumlah Star: ${stars}\n` +
+                            `Via Pembayaran: ${paymentMethod}\n` +
+                            `Total Harga: RM${total}\n` +
                             `Catatan: ${note || 'Tiada'}`;
 
             const whatsappNumber = "+60104624558";
