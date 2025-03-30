@@ -3,71 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Popia Burgerdil Ramadan</title>
+    <title>Amir Popia Burgerdil Aum Dapnya</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', sans-serif;
         }
 
         body {
-            background-color: #f0f7f4;
-            color: #2d3436;
+            background: linear-gradient(135deg, #e0f7fa, #b2ebf2);
+            color: #1a237e;
             line-height: 1.6;
             overflow-x: hidden;
         }
 
         .navbar {
-            background-color: #219653;
+            background: rgba(33, 150, 83, 0.95);
             padding: 1.5rem;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
 
         .navbar h1 {
-            color: #ffeaa7;
+            color: #fffde7;
             text-align: center;
-            font-size: 2rem;
+            font-size: 2.2rem;
+            letter-spacing: 2px;
             text-transform: uppercase;
         }
 
         .hero {
             margin-top: 100px;
             text-align: center;
-            padding: 4rem 2rem;
-            background: linear-gradient(135deg, #ffeaa7, #fad390);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://www.transparenttextures.com/patterns/arabesque.png');
-            opacity: 0.3;
+            padding: 5rem 2rem;
+            background: linear-gradient(45deg, #ffca28, #ff8f00);
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
         }
 
         .hero h2 {
-            color: #d63031;
-            font-size: 2.5rem;
+            color: #d81b60;
+            font-size: 3rem;
+            font-weight: 700;
             margin-bottom: 1rem;
-            position: relative;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
 
         .hero p {
-            font-size: 1.2rem;
-            max-width: 600px;
+            font-size: 1.3rem;
+            max-width: 700px;
             margin: 0 auto;
-            position: relative;
+            color: #fff;
+        }
+
+        .promo-banner {
+            background: #d81b60;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin: 2rem auto;
+            max-width: 800px;
+            border-radius: 50px;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
 
         .products {
@@ -75,76 +84,89 @@
             margin: 3rem auto;
             padding: 0 2rem;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
         }
 
         .card {
-            background-color: white;
+            background: rgba(255, 255, 255, 0.9);
             padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             text-align: center;
-            transition: transform 0.3s ease;
+            position: relative;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .card.recommended::after {
+            content: 'Pilihan Terbaik';
+            position: absolute;
+            top: -10px;
+            right: 10px;
+            background: #ffca28;
+            color: #1a237e;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
         }
 
         .card:hover {
-            transform: translateY(-10px);
-        }
-
-        .card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 10px;
-            margin-bottom: 1rem;
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
         }
 
         .card h3 {
             color: #219653;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             margin-bottom: 0.5rem;
         }
 
         .card p {
             font-weight: bold;
-            color: #d63031;
+            color: #d81b60;
+            font-size: 1.4rem;
         }
 
         .card button {
-            background-color: #219653;
+            background: linear-gradient(90deg, #219653, #4caf50);
             color: white;
             border: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 25px;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
             cursor: pointer;
             margin-top: 1rem;
             font-weight: bold;
-            transition: background-color 0.3s ease;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
         }
 
         .card button:hover {
-            background-color: #1c7d44;
+            background: linear-gradient(90deg, #1c7d44, #388e3c);
+            transform: scale(1.1);
         }
 
         .order-section {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 3rem auto;
             padding: 3rem;
-            background: linear-gradient(135deg, #ffffff, #f0f7f4);
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
         }
 
         .order-section h2 {
-            color: #d63031;
+            color: #d81b60;
             text-align: center;
             margin-bottom: 2rem;
-            font-size: 2rem;
+            font-size: 2.5rem;
+            font-weight: 700;
         }
 
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.8rem;
         }
 
         .form-group label {
@@ -152,83 +174,92 @@
             margin-bottom: 0.5rem;
             color: #219653;
             font-weight: bold;
+            font-size: 1.1rem;
         }
 
         .form-group input, .form-group select, .form-group textarea {
             width: 100%;
-            padding: 0.75rem;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
+            padding: 1rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            background: #f5f5f5;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
         }
 
         .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-            border-color: #219653;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(33, 150, 83, 0.3);
             outline: none;
         }
 
         .submit-btn {
-            background-color: #d63031;
+            background: linear-gradient(90deg, #d81b60, #f06292);
             color: white;
             border: none;
-            padding: 1rem 2rem;
-            border-radius: 25px;
+            padding: 1.2rem 2.5rem;
+            border-radius: 30px;
             cursor: pointer;
             width: 100%;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: bold;
-            transition: background-color 0.3s ease;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
         }
 
         .submit-btn:hover {
-            background-color: #b52626;
+            background: linear-gradient(90deg, #b52626, #d81b60);
+            transform: scale(1.05);
         }
 
         .footer {
-            background-color: #2d3436;
+            background: #1a237e;
             color: white;
             text-align: center;
             padding: 2rem;
             margin-top: 3rem;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
+            clip-path: polygon(0 20%, 100% 0, 100% 100%, 0 100%);
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
+            from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
         .fade-in {
-            animation: fadeIn 0.5s ease forwards;
+            opacity: 0;
+            animation: fadeIn 0.6s ease forwards;
         }
     </style>
 </head>
 <body>
     <div class="navbar">
-        <h1>Popia Burgerdil Ramadan</h1>
+        <h1>Amir Popia Burgerdil Aum Dapnya</h1>
     </div>
 
     <div class="hero">
-        <h2>Selamat Menyambut Ramadan & Hari Raya!</h2>
-        <p>Nikmati Popia Burgerdil Istimewa untuk Berbuka Puasa dan Sambutan Hari Raya Bersama Keluarga</p>
+        <h2>Raya 2025 Bersama Popia hehe!</h2>
+        <p>Rasai kelainan Popia Burgerdil terbaik untuk berbuka puasa dan sambutan Hari Raya yang penuh nikmat!</p>
+    </div>
+
+    <div class="promo-banner">
+        PROMO RAMADAN: Beli 10 Percuma 1! (Tamat 30 April 2025)
     </div>
 
     <div class="products" id="product-list">
-        <div class="card fade-in">
-            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Popia Klasik">
-            <h3>Popia Burgerdil Klasik</h3>
+        <div class="card fade-in recommended">
+            <h3>Popia Burgerdil Biasa</h3>
             <p>RM 5.00</p>
-            <button onclick="addToCart('Popia Burgerdil Klasik', 5.00)">Tambah ke Troli</button>
+            <button onclick="addToCart('Popia Burgerdil Biasa', 5.00)">Tambah ke Troli</button>
         </div>
         <div class="card fade-in">
-            <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Popia Pedas">
             <h3>Popia Burgerdil Pedas</h3>
             <p>RM 6.00</p>
             <button onclick="addToCart('Popia Burgerdil Pedas', 6.00)">Tambah ke Troli</button>
         </div>
         <div class="card fade-in">
-            <img src="https://images.unsplash.com/photo-1571066819795-7e1e6bdf5a20?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Popia Keju">
             <h3>Popia Burgerdil Keju</h3>
             <p>RM 7.00</p>
             <button onclick="addToCart('Popia Burgerdil Keju', 7.00)">Tambah ke Troli</button>
@@ -236,7 +267,7 @@
     </div>
 
     <div class="order-section fade-in">
-        <h2>Borang Pesanan Ramadan</h2>
+        <h2>Pesan Sekarang untuk Raya 2025!</h2>
         <form id="orderForm">
             <div class="form-group">
                 <label for="name">Nama Penuh:</label>
@@ -251,10 +282,10 @@
                 <textarea id="address" required placeholder="Masukkan alamat lengkap"></textarea>
             </div>
             <div class="form-group">
-                <label>Pilih Produk:</label>
+                <label>Pilih Popia Burgerdil:</label>
                 <select id="product" required>
-                    <option value="">Pilih Popia Burgerdil</option>
-                    <option value="Popia Burgerdil Klasik - RM 5.00">Popia Burgerdil Klasik - RM 5.00</option>
+                    <option value="">Pilih Produk</option>
+                    <option value="Popia Burgerdil Klasik - RM 5.00">Popia Burgerdil Klasik - RM 5.00 (Recommended)</option>
                     <option value="Popia Burgerdil Pedas - RM 6.00">Popia Burgerdil Pedas - RM 6.00</option>
                     <option value="Popia Burgerdil Keju - RM 7.00">Popia Burgerdil Keju - RM 7.00</option>
                 </select>
@@ -268,7 +299,7 @@
     </div>
 
     <div class="footer">
-        <p>Hubungi kami: 012-3456789 | Email: popiaburgerdil@email.com</p>
+        <p>Hubungi kami: +60104624558 | Email: amirhamzan3@gmail.com</p>
     </div>
 
     <script>
@@ -290,7 +321,7 @@
             const product = document.getElementById('product').value;
             const quantity = document.getElementById('quantity').value;
 
-            const message = `*Pesanan Popia Burgerdil Ramadan*\n\n` +
+            const message = `*Pesanan Amir Popia Burgerdil Aum Dapnya*\n\n` +
                            `Nama: ${name}\n` +
                            `Telefon: ${phone}\n` +
                            `Alamat: ${address}\n` +
@@ -310,7 +341,7 @@
                 setTimeout(() => {
                     el.style.opacity = '1';
                     el.style.transform = 'translateY(0)';
-                }, index * 200);
+                }, index * 300);
             });
         });
     </script>
