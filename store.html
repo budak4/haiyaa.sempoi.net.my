@@ -28,45 +28,49 @@
             animation: fadeIn 1s ease-in;
         }
         .header h1 {
-            font-size: 3em;
+            font-size: 2.5em;
             margin: 0;
             text-transform: uppercase;
             letter-spacing: 2px;
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
         }
         .header p {
-            font-size: 1.2em;
+            font-size: 1.1em;
             margin: 10px 0 0;
             opacity: 0.9;
         }
+        /* Katalog Baru */
         .price-list {
             margin: 40px 0;
-            background: rgba(255, 255, 255, 0.15);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+        }
+        .price-card {
+            background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-            animation: slideUp 1s ease-in;
-        }
-        .price-list h2 {
-            color: #00ddeb;
-            font-size: 2em;
-            margin-bottom: 20px;
-        }
-        .price-list ul {
-            list-style: none;
-            padding: 0;
-        }
-        .price-list li {
-            padding: 15px;
-            font-size: 1.1em;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
             transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
-        .price-list li:hover {
-            background: rgba(255, 255, 255, 0.05);
-            transform: translateX(10px);
+        .price-card:hover {
+            transform: translateY(-10px);
+            background: rgba(0, 221, 235, 0.2);
+            box-shadow: 0 10px 25px rgba(0, 221, 235, 0.5);
         }
+        .price-card h3 {
+            margin: 0;
+            font-size: 1.3em;
+            color: #00ddeb;
+        }
+        .price-card p {
+            margin: 10px 0 0;
+            font-size: 1.1em;
+            color: #fff;
+        }
+        /* Order Form Baru */
         .order-form {
             background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(10px);
@@ -78,18 +82,25 @@
         .order-form h2 {
             color: #00ddeb;
             font-size: 2em;
+            text-align: center;
             margin-bottom: 20px;
         }
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
         .order-form label {
-            display: block;
-            margin: 15px 0 5px;
-            font-size: 1.1em;
+            margin-bottom: 5px;
+            font-size: 1em;
             color: #fff;
         }
         .order-form input, .order-form select {
-            width: 100%;
             padding: 12px;
-            margin-bottom: 15px;
             border: none;
             border-radius: 10px;
             background: rgba(255, 255, 255, 0.25);
@@ -105,16 +116,29 @@
         .order-form button {
             background: linear-gradient(45deg, #1e90ff, #00ddeb);
             color: white;
-            padding: 15px 30px;
+            padding: 15px;
             border: none;
             border-radius: 10px;
             font-size: 1.2em;
             cursor: pointer;
             transition: all 0.3s ease;
+            margin-top: 20px;
+            width: 100%;
         }
         .order-form button:hover {
             transform: scale(1.05);
             box-shadow: 0 0 20px rgba(0, 221, 235, 0.7);
+        }
+        /* Responsif */
+        @media (max-width: 600px) {
+            .header h1 { font-size: 2em; }
+            .header p { font-size: 1em; }
+            .price-card { padding: 15px; }
+            .price-card h3 { font-size: 1.1em; }
+            .price-card p { font-size: 1em; }
+            .form-grid { grid-template-columns: 1fr; }
+            .order-form { padding: 20px; }
+            .order-form h2 { font-size: 1.5em; }
         }
         @keyframes fadeIn {
             from { opacity: 0; }
@@ -135,41 +159,60 @@
         </div>
 
         <div class="price-list">
-            <h2>Katalog Harga</h2>
-            <ul>
-                <li>Epic - RM3 / Star</li>
-                <li>Legend - RM3.50 / Star</li>
-                <li>Mythic - RM5 / Star</li>
-                <li>Mythic Honor - RM6 / Star</li>
-                <li>Mythic Glory - RM7 / Star</li>
-            </ul>
+            <div class="price-card">
+                <h3>Epic</h3>
+                <p>RM3 / Star</p>
+            </div>
+            <div class="price-card">
+                <h3>Legend</h3>
+                <p>RM3.50 / Star</p>
+            </div>
+            <div class="price-card">
+                <h3>Mythic</h3>
+                <p>RM5 / Star</p>
+            </div>
+            <div class="price-card">
+                <h3>Mythic Honor</h3>
+                <p>RM6 / Star</p>
+            </div>
+            <div class="price-card">
+                <h3>Mythic Glory</h3>
+                <p>RM7 / Star</p>
+            </div>
         </div>
 
         <div class="order-form">
             <h2>Order Sekarang</h2>
             <form id="orderForm" onsubmit="sendToWhatsApp(event)">
-                <label for="name">Nama:</label>
-                <input type="text" id="name" name="name" required placeholder="Masukkan nama anda">
-
-                <label for="ign">IGN (In-Game Name):</label>
-                <input type="text" id="ign" name="ign" required placeholder="Nama di MLBB">
-
-                <label for="rank">Pilih Rank:</label>
-                <select id="rank" name="rank" required>
-                    <option value="">-- Pilih Rank --</option>
-                    <option value="Epic - RM3/Star">Epic - RM3/Star</option>
-                    <option value="Legend - RM3.50/Star">Legend - RM3.50/Star</option>
-                    <option value="Mythic - RM5/Star">Mythic - RM5/Star</option>
-                    <option value="Mythic Honor - RM6/Star">Mythic Honor - RM6/Star</option>
-                    <option value="Mythic Glory - RM7/Star">Mythic Glory - RM7/Star</option>
-                </select>
-
-                <label for="stars">Jumlah Star:</label>
-                <input type="number" id="stars" name="stars" min="1" required placeholder="Berapa star?">
-
-                <label for="note">Catatan (Opsional):</label>
-                <input type="text" id="note" name="note" placeholder="Contoh: Main pake hero Fanny">
-
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="name">Nama:</label>
+                        <input type="text" id="name" name="name" required placeholder="Masukkan nama anda">
+                    </div>
+                    <div class="form-group">
+                        <label for="ign">IGN (In-Game Name):</label>
+                        <input type="text" id="ign" name="ign" required placeholder="Nama di MLBB">
+                    </div>
+                    <div class="form-group">
+                        <label for="rank">Pilih Rank:</label>
+                        <select id="rank" name="rank" required>
+                            <option value="">-- Pilih Rank --</option>
+                            <option value="Epic - RM3/Star">Epic - RM3/Star</option>
+                            <option value="Legend - RM3.50/Star">Legend - RM3.50/Star</option>
+                            <option value="Mythic - RM5/Star">Mythic - RM5/Star</option>
+                            <option value="Mythic Honor - RM6/Star">Mythic Honor - RM6/Star</option>
+                            <option value="Mythic Glory - RM7/Star">Mythic Glory - RM7/Star</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="stars">Jumlah Star:</label>
+                        <input type="number" id="stars" name="stars" min="1" required placeholder="Berapa star?">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="note">Catatan (Opsional):</label>
+                    <input type="text" id="note" name="note" placeholder="Contoh: Main pake hero Fanny">
+                </div>
                 <button type="submit">Hantar Pesanan</button>
             </form>
         </div>
