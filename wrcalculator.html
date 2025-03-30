@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amir Store - Winrate Calculator</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: #fff;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 1;
+        }
+        .header {
+            text-align: center;
+            padding: 50px 20px;
+            background: linear-gradient(45deg, rgba(30, 144, 255, 0.9), rgba(0, 221, 235, 0.9));
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            animation: fadeIn 1s ease-in;
+            border: 2px solid #00ddeb;
+        }
+        .header h1 {
+            font-size: 3em;
+            font-weight: 700;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            background: linear-gradient(45deg, #fff, #00ddeb);
+            -webkit-background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+        }
+        .header p {
+            font-size: 1.2em;
+            margin: 10px 0 0;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+        .nav-button {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .nav-button a {
+            background: linear-gradient(45deg, #1e90ff, #00ddeb);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2em;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 221, 235, 0.5);
+        }
+        .nav-button a:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(0, 221, 235, 0.8);
+        }
+        .calculator {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            animation: slideUp 1.2s ease-in;
+            border: 2px solid #00ddeb;
+        }
+        .calculator h2 {
+            color: #00ddeb;
+            font-size: 2em;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(0, 221, 235, 0.8);
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+        .calculator label {
+            margin-bottom: 5px;
+            font-size: 1em;
+            font-weight: 500;
+            color: #fff;
+            text-shadow: 0 0 3px rgba(255, 255, 255, 0.5);
+        }
+        .calculator input {
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.25);
+            color: #fff;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 5px rgba(0, 221, 235, 0.3);
+        }
+        .calculator input:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.35);
+            box-shadow: 0 0 10px rgba(0, 221, 235, 0.7);
+        }
+        .calculator button {
+            background: linear-gradient(45deg, #1e90ff, #00ddeb);
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            width: 100%;
+            box-shadow: 0 5px 15px rgba(0, 221, 235, 0.5);
+        }
+        .calculator button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(0, 221, 235, 0.8);
+        }
+        .result {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #00ddeb;
+            text-shadow: 0 0 5px rgba(0, 221, 235, 0.8);
+        }
+        @media (max-width: 600px) {
+            .header h1 { font-size: 2em; }
+            .header p { font-size: 1em; }
+            .calculator { padding: 20px; }
+            .calculator h2 { font-size: 1.5em; }
+            .result { font-size: 1em; }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Amir Store</h1>
+            <p>Winrate Calculator - Kira Kemenangan Anda!</p>
+        </div>
+
+        <div class="nav-button">
+            <a href="index.html">Kembali ke Jasa Joki</a>
+        </div>
+
+        <div class="calculator">
+            <h2>Winrate Calculator</h2>
+            <div class="form-group">
+                <label for="current-matches">Your Current Number Of Matches (E.g. 350):</label>
+                <input type="number" id="current-matches" min="0" placeholder="Masukkan jumlah perlawanan" required>
+            </div>
+            <div class="form-group">
+                <label for="current-winrate">Your Current Win Rate (%) (E.g. 50):</label>
+                <input type="number" id="current-winrate" min="0" max="100" placeholder="Masukkan winrate semasa" required>
+            </div>
+            <div class="form-group">
+                <label for="desired-winrate">Your Desired Win Rate (%) (E.g. 80):</label>
+                <input type="number" id="desired-winrate" min="0" max="100" placeholder="Masukkan winrate yang diingini" required>
+            </div>
+            <button onclick="calculateWinrate()">Kira Sekarang</button>
+            <div class="result" id="result">Hasil akan dipaparkan di sini</div>
+        </div>
+    </div>
+
+    <script>
+        function calculateWinrate() {
+            const matches = parseInt(document.getElementById('current-matches').value);
+            const currentWR = parseFloat(document.getElementById('current-winrate').value);
+            const desiredWR = parseFloat(document.getElementById('desired-winrate').value);
+
+            if (!matches || !currentWR || !desiredWR || currentWR > 100 || desiredWR > 100) {
+                document.getElementById('result').textContent = "Sila masukkan nilai yang sah!";
+                return;
+            }
+
+            const currentWins = (currentWR / 100) * matches;
+            const requiredWins = (desiredWR / 100) * matches;
+            const winsNeeded = requiredWins - currentWins;
+            const additionalMatches = Math.ceil((winsNeeded * 100) / (100 - desiredWR));
+
+            if (winsNeeded <= 0) {
+                document.getElementById('result').textContent = "Winrate anda sudah mencapai atau melebihi yang diingini!";
+            } else {
+                document.getElementById('result').textContent = 
+                    `Anda perlu menang ${Math.ceil(winsNeeded)} perlawanan lagi. ` +
+                    `Dengan winrate 100%, anda perlu main ${additionalMatches} perlawanan tambahan.`;
+            }
+        }
+    </script>
+</body>
+</html>
