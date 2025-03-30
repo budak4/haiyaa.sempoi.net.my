@@ -9,15 +9,29 @@
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            background: url('https://i.pinimg.com/originals/58/17/59/581759f9d27aafe279c73585f62e0db5.jpg') no-repeat center center fixed;
+            background: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhztCbuRHKKjAKIZ1oxfNER2l27tO6gZHi7-bB_784JC41hOlIG2ZZf_ctwVgwQJoRHJ_V4xxZpQuzZbiqvMsKVyXCN_2nl61o54aAi9Gks7E-AjjF5W97MVKNZqriJrTqEt5rdJLox4V8S7ZMopvjISVc4MAonah1iX4WhT2rirLFkQcx7hnj2lcbWTg/w640-h360/kagura-exorcist-skin-wallpaper-hd%20(2).jpg') no-repeat center center fixed;
             background-size: cover;
             color: #fff;
             overflow-x: hidden;
+            position: relative;
+        }
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4); /* Overlay gelap untuk kontras */
+            filter: blur(5px); /* Blur sikit */
+            z-index: -1;
         }
         .container {
             max-width: 900px;
             margin: 0 auto;
             padding: 40px 20px;
+            position: relative;
+            z-index: 1;
         }
         .header {
             text-align: center;
@@ -39,7 +53,7 @@
             margin: 10px 0 0;
             opacity: 0.9;
         }
-        /* Katalog Baru */
+        /* Katalog */
         .price-list {
             margin: 40px 0;
             display: grid;
@@ -70,7 +84,7 @@
             font-size: 1.1em;
             color: #fff;
         }
-        /* Order Form Baru */
+        /* Order Form */
         .order-form {
             background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(10px);
