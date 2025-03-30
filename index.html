@@ -20,22 +20,65 @@
         }
 
         .navbar {
-            background: rgba(33, 150, 83, 0.95);
+            background: linear-gradient(90deg, rgba(33, 150, 83, 0.95), rgba(76, 175, 80, 0.95));
             padding: 1rem;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .navbar:hover {
+            background: linear-gradient(90deg, rgba(33, 150, 83, 1), rgba(76, 175, 80, 1));
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
         }
 
         .navbar h1 {
             color: #fffde7;
-            text-align: center;
-            font-size: clamp(1.2rem, 4vw, 1.8rem);
-            letter-spacing: 1px;
+            font-size: clamp(1.4rem, 4.5vw, 2rem);
+            letter-spacing: 2px;
             text-transform: uppercase;
+            font-weight: 700;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            position: relative;
+            padding: 0.5rem 1.5rem;
+            background: linear-gradient(45deg, #ffca28, #fffde7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: textGlow 2s infinite alternate;
+        }
+
+        .navbar h1::before {
+            content: '🌙';
+            position: absolute;
+            left: -1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            color: #fffde7;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+        }
+
+        .navbar h1::after {
+            content: '⭐';
+            position: absolute;
+            right: -1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            color: #fffde7;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+        }
+
+        @keyframes textGlow {
+            0% { text-shadow: 0 0 5px rgba(255, 215, 0, 0.5); }
+            100% { text-shadow: 0 0 15px rgba(255, 215, 0, 0.8); }
         }
 
         .hero {
@@ -169,9 +212,7 @@
 
         .order-section h2 {
             color: #d81b60;
-            text-align: center;
-            margin-bottom: 1.5rem;
-            font-size: clamp(1.5rem, 5vw, 2.5rem);
+            fon-size: clamp(1.5rem, 5vw, 2.5rem);
             font-weight: 700;
         }
 
@@ -200,7 +241,7 @@
 
         .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
             background: #fff;
-            box-shadow: 0 0 10px rgba(33, 150, 83, 0.3);
+            box-shadow: 0 0  juda10px rgba(33, 150, 83, 0.3);
             outline: none;
         }
 
@@ -266,6 +307,9 @@
         @media (max-width: 480px) {
             .navbar h1 {
                 font-size: 1.2rem;
+            }
+            .navbar h1::before, .navbar h1::after {
+                font-size: 1rem;
             }
             .hero h2 {
                 font-size: 1.5rem;
