@@ -1,0 +1,159 @@
+<!DOCTYPE html><html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SATRIAN MACHINE</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f8f0ff;
+      color: #3a005e;
+      overflow-x: hidden;
+    }header {
+  background-color: #6a0dad;
+  color: white;
+  padding: 1.5rem;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.hero {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: url('https://zx.cyber-joki.us/file_00000000762061f7a3767caaf9028856_conversation_id=6805ebb0-a048-8008-8bea-adcab8bd9596&message_id=1aed7b36-650d-44bb-bf64-d06021768867.png') center/cover no-repeat;
+  color: white;
+}
+
+.hero h2 {
+  color: white;
+  text-shadow: 1px 1px 4px #6a0dad;
+}
+
+.hero p {
+  text-shadow: 1px 1px 3px #6a0dad;
+}
+
+.scroll-hint {
+  text-align: center;
+  margin-top: 1rem;
+  font-style: italic;
+  color: #6a0dad;
+  animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.catalog {
+  display: flex;
+  overflow-x: auto;
+  gap: 1rem;
+  padding: 2rem;
+  scroll-snap-type: x mandatory;
+}
+
+.catalog::-webkit-scrollbar {
+  height: 8px;
+}
+
+.catalog::-webkit-scrollbar-thumb {
+  background: #6a0dad;
+  border-radius: 4px;
+}
+
+.item {
+  background-color: white;
+  border: 2px solid #6a0dad;
+  border-radius: 10px;
+  padding: 1rem;
+  min-width: 200px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+  scroll-snap-align: center;
+}
+
+.item:hover {
+  transform: scale(1.05);
+}
+
+.item img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+
+.item h3 {
+  margin-top: 0.5rem;
+  color: #6a0dad;
+}
+
+.item .price {
+  font-weight: bold;
+  color: #3a005e;
+  margin-top: 0.3rem;
+}
+
+footer {
+  background-color: #6a0dad;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+
+@media (min-width: 768px) {
+  .catalog {
+    justify-content: center;
+    overflow-x: hidden;
+    flex-wrap: wrap;
+  }
+
+  .scroll-hint {
+    display: none;
+  }
+
+  .item {
+    min-width: 200px;
+    max-width: 200px;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    SATRIAN MACHINE
+  </header>  <section class="hero">
+    <h2>Vending Machine Dalam Talian Anda!</h2>
+    <p>Pilih minuman kegemaran anda & bayar secara atas talian.</p>
+  </section>  <div class="scroll-hint">← Slide untuk lihat lebih banyak minuman →</div>  <section class="catalog" id="catalog">
+    <!-- Item akan ditambah melalui JavaScript -->
+  </section>  <footer>
+    &copy; 2025 SATRIAN MACHINE
+  </footer>  <script>
+    const catalog = [
+      { name: "Fanta Grape", img: "https://www.thewestonbiltongcompany.co.uk/cdn/shop/products/FantaGrape.png?v=1721988279", price: "RM2.50" },
+      { name: "Coca Cola", img: "https://www.theboogaloobali.com/wp-content/uploads/Coca-cola_Original-Can-330-ml.png", price: "RM2.50" },
+      { name: "Sprite", img: "https://maggiesfoodforthesoul.com/cdn/shop/files/Sprite.png?v=1715694568", price: "RM2.50" },
+      { name: "100 Plus Grape", img: "https://lh3.googleusercontent.com/proxy/pCl7sFCQJ2B4GfQ4vqvDDD3HYM63UPX8gNLcWSFXF5ruABG5mHpfCgOveIc6C_U1_Ut1vP5nPo-Ot73B1Rn1GbqsRO5x-aGYXyNm-nlmqY9lO0Zy", price: "RM2.50" }
+    ];
+
+    const catalogContainer = document.getElementById("catalog");
+
+    catalog.forEach(item => {
+      const div = document.createElement("div");
+      div.className = "item";
+      div.innerHTML = `
+        <img src="${item.img}" alt="${item.name}">
+        <h3>${item.name}</h3>
+        <div class="price">${item.price}</div>
+      `;
+      catalogContainer.appendChild(div);
+    });
+  </script></body>
+</html>
