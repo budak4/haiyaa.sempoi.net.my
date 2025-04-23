@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="ms">
+<!DOCTYPE html>
+<html lang="ms">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,132 +11,207 @@
       background-color: #f8f0ff;
       color: #3a005e;
       overflow-x: hidden;
-    }header {
-  background-color: #6a0dad;
-  color: white;
-  padding: 1.5rem;
-  text-align: center;
-  font-size: 2rem;
-  font-weight: bold;
-}
+    }
 
-.hero {
-  text-align: center;
-  padding: 4rem 2rem;
-  background: url('https://zx.cyber-joki.us/file_00000000762061f7a3767caaf9028856_conversation_id=6805ebb0-a048-8008-8bea-adcab8bd9596&message_id=1aed7b36-650d-44bb-bf64-d06021768867.png') center/cover no-repeat;
-  color: white;
-}
+    header {
+      background: linear-gradient(90deg, #6a0dad, #9b30ff);
+      color: white;
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 2.2rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
 
-.hero h2 {
-  color: white;
-  text-shadow: 1px 1px 4px #6a0dad;
-}
+    .hero {
+      text-align: center;
+      padding: 6rem 2rem 4rem;
+      background: url('https://zx.cyber-joki.us/file_00000000762061f7a3767caaf9028856_conversation_id=6805ebb0-a048-8008-8bea-adcab8bd9596&message_id=1aed7b36-650d-44bb-bf64-d06021768867.png') center/cover no-repeat;
+      color: white;
+      position: relative;
+    }
 
-.hero p {
-  text-shadow: 1px 1px 3px #6a0dad;
-}
+    .hero h2 {
+      color: white;
+      text-shadow: 2px 2px 5px #6a0dad;
+      font-size: 2rem;
+    }
 
-.scroll-hint {
-  text-align: center;
-  margin-top: 1rem;
-  font-style: italic;
-  color: #6a0dad;
-  animation: blink 1.5s infinite;
-}
+    .hero p {
+      text-shadow: 1px 1px 4px #6a0dad;
+      font-size: 1.1rem;
+    }
 
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.4; }
-}
+    .scroll-hint {
+      text-align: center;
+      margin-top: 1rem;
+      font-style: italic;
+      color: #6a0dad;
+      animation: blink 1.5s infinite;
+      font-weight: 500;
+    }
 
-.catalog {
-  display: flex;
-  overflow-x: auto;
-  gap: 1rem;
-  padding: 2rem;
-  scroll-snap-type: x mandatory;
-}
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
 
-.catalog::-webkit-scrollbar {
-  height: 8px;
-}
+    .catalog {
+      display: flex;
+      overflow-x: auto;
+      gap: 1rem;
+      padding: 2rem;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+    }
 
-.catalog::-webkit-scrollbar-thumb {
-  background: #6a0dad;
-  border-radius: 4px;
-}
+    .catalog::-webkit-scrollbar {
+      height: 8px;
+    }
 
-.item {
-  background-color: white;
-  border: 2px solid #6a0dad;
-  border-radius: 10px;
-  padding: 1rem;
-  min-width: 200px;
-  text-align: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s;
-  scroll-snap-align: center;
-}
+    .catalog::-webkit-scrollbar-thumb {
+      background: #6a0dad;
+      border-radius: 4px;
+    }
 
-.item:hover {
-  transform: scale(1.05);
-}
+    .item {
+      background-color: white;
+      border: 2px solid #6a0dad;
+      border-radius: 15px;
+      padding: 1rem;
+      min-width: 200px;
+      text-align: center;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s, box-shadow 0.3s;
+      scroll-snap-align: center;
+    }
 
-.item img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 6px;
-}
+    .item:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
 
-.item h3 {
-  margin-top: 0.5rem;
-  color: #6a0dad;
-}
+    .item img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
 
-.item .price {
-  font-weight: bold;
-  color: #3a005e;
-  margin-top: 0.3rem;
-}
+    .item h3 {
+      margin-top: 0.5rem;
+      color: #6a0dad;
+      font-size: 1.1rem;
+    }
 
-footer {
-  background-color: #6a0dad;
-  color: white;
-  text-align: center;
-  padding: 1rem;
-  margin-top: 2rem;
-}
+    .item .price {
+      font-weight: bold;
+      color: #3a005e;
+      margin-top: 0.3rem;
+    }
 
-@media (min-width: 768px) {
-  .catalog {
-    justify-content: center;
-    overflow-x: hidden;
-    flex-wrap: wrap;
-  }
+    form {
+      background: #fff;
+      margin: 2rem;
+      padding: 1.5rem;
+      border-radius: 10px;
+      border: 2px solid #6a0dad;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
 
-  .scroll-hint {
-    display: none;
-  }
+    form h3 {
+      text-align: center;
+      color: #6a0dad;
+    }
 
-  .item {
-    min-width: 200px;
-    max-width: 200px;
-  }
-}
+    form input, form select, form textarea {
+      width: 100%;
+      padding: 0.6rem;
+      margin: 0.5rem 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
 
+    form button {
+      width: 100%;
+      background: #6a0dad;
+      color: white;
+      padding: 0.7rem;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    form button:hover {
+      background: #8b3fff;
+    }
+
+    footer {
+      background: linear-gradient(90deg, #6a0dad, #9b30ff);
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .catalog {
+        justify-content: center;
+        overflow-x: hidden;
+        flex-wrap: wrap;
+      }
+
+      .scroll-hint {
+        display: none;
+      }
+
+      .item {
+        min-width: 200px;
+        max-width: 200px;
+      }
+    }
   </style>
 </head>
 <body>
   <header>
     SATRIAN MACHINE
-  </header>  <section class="hero">
+  </header>
+
+  <section class="hero">
     <h2>Vending Machine Dalam Talian Anda!</h2>
     <p>Pilih minuman kegemaran anda & bayar secara atas talian.</p>
-  </section>  <div class="scroll-hint">← Slide untuk lihat lebih banyak minuman →</div>  <section class="catalog" id="catalog">
-    <!-- Item akan ditambah melalui JavaScript -->
-  </section>  <footer>
+  </section>
+
+  <div class="scroll-hint">← Slide untuk lihat lebih banyak minuman →</div>
+
+  <section class="catalog" id="catalog"></section>
+
+  <form id="orderForm">
+    <h3>Borang Tempahan</h3>
+    <input type="text" id="name" placeholder="Nama Penuh" required>
+    <input type="text" id="class" placeholder="Kelas" required>
+    <select id="drink" required>
+      <option value="">Pilih Minuman</option>
+      <option value="Fanta Grape">Fanta Grape</option>
+      <option value="Coca Cola">Coca Cola</option>
+      <option value="Sprite">Sprite</option>
+      <option value="100 Plus Grape">100 Plus Grape</option>
+    </select>
+    <input type="number" id="quantity" placeholder="Kuantiti" min="1" required>
+    <textarea id="note" placeholder="Catatan Tambahan (jika ada)"></textarea>
+    <button type="submit">Hantar Tempahan ke WhatsApp</button>
+  </form>
+
+  <footer>
     &copy; 2025 SATRIAN MACHINE
-  </footer>  <script>
+  </footer>
+
+  <script>
     const catalog = [
       { name: "Fanta Grape", img: "https://www.thewestonbiltongcompany.co.uk/cdn/shop/products/FantaGrape.png?v=1721988279", price: "RM2.50" },
       { name: "Coca Cola", img: "https://www.theboogaloobali.com/wp-content/uploads/Coca-cola_Original-Can-330-ml.png", price: "RM2.50" },
@@ -155,5 +231,18 @@ footer {
       `;
       catalogContainer.appendChild(div);
     });
-  </script></body>
+
+    document.getElementById("orderForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const name = document.getElementById("name").value;
+      const kelas = document.getElementById("class").value;
+      const drink = document.getElementById("drink").value;
+      const quantity = document.getElementById("quantity").value;
+      const note = document.getElementById("note").value;
+
+      const message = `Tempahan dari SATRIAN MACHINE:%0aNama: ${name}%0aKelas: ${kelas}%0aMinuman: ${drink}%0aKuantiti: ${quantity}%0aCatatan: ${note}`;
+      window.open(`https://wa.me/60104624558?text=${message}`, '_blank');
+    });
+  </script>
+</body>
 </html>
