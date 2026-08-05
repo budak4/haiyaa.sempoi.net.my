@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ujian Problematic Bilik Asrama 🎮</title>
+    <!-- Font Pixel Minecraft Style -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body {
+            background-color: #2b0938;
+            font-family: 'Press Start 2P', cursive;
+            color: #ffffff;
+            text-align: center;
+            padding: 15px;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: #4a154b;
+            padding: 20px 15px;
+            border: 4px solid #ffcc00;
+            box-shadow: 6px 6px 0px #00ffff;
+            border-radius: 4px;
+        }
+
+        h1 {
+            color: #ff007f;
+            text-shadow: 3px 3px #00ffff;
+            font-size: 0.95rem;
+            line-height: 1.4;
+            margin-top: 10px;
+        }
+
+        .progress {
+            font-size: 0.55rem;
+            color: #00ffcc;
+            margin-bottom: 10px;
+        }
+
+        .soalan {
+            font-size: 0.65rem;
+            line-height: 1.6;
+            color: #ffcc00;
+            background: #1a0523;
+            padding: 15px 10px;
+            border: 2px dashed #ff007f;
+            margin-bottom: 20px;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Container Kad Ahli Bilik */
+        .cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        .card {
+            background-color: #ff007f;
+            color: #ffffff;
+            padding: 12px 5px;
+            font-size: 0.6rem;
+            font-family: 'Press Start 2P', cursive;
+            border: 3px solid #000000;
+            box-shadow: 3px 3px 0px #00ffff;
+            cursor: pointer;
+            width: 30%;
+            text-align: center;
+        }
+
+        .card:active {
+            transform: translate(2px, 2px);
+            box-shadow: 1px 1px 0px #00ffff;
+            background-color: #ffcc00;
+            color: #000;
+        }
+
+        /* Skrin Carta Penutup */
+        #chartScreen { display: none; }
+
+        .chart-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .chart-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #1a0523;
+            border: 2px solid #00ffcc;
+            padding: 10px;
+            font-size: 0.55rem;
+        }
+
+        .chart-item.top-1 {
+            background: #ff007f;
+            border-color: #ffcc00;
+            animation: pulse 1s infinite;
+        }
+
+        .badge {
+            font-size: 0.45rem;
+            background: #ffcc00;
+            color: #000;
+            padding: 3px 5px;
+        }
+
+        button {
+            background: #00ffcc;
+            color: #000;
+            border: 3px solid #000;
+            padding: 12px;
+            font-size: 0.6rem;
+            font-family: 'Press Start 2P', cursive;
+            cursor: pointer;
+            box-shadow: 4px 4px 0px #ff007f;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    
+    <!-- SKRIN GAME UTAMA -->
+    <div id="gameScreen">
+        <h1>🚨 UJIAN PROBLEMATIC 🚨</h1>
+        <div class="progress" id="progressText">SOALAN 1 / 5</div>
+        
+        <div class="soalan" id="soalanText">
+            Loading soalan...
+        </div>
+
+        <p style="font-size: 0.5rem; color: #00ffcc;">PILIH SUSPEK UNTUK SOALAN NI:</p>
+
+        <div class="cards-container">
+            <div class="card" onclick="vote('Amir')">Amir</div>
+            <div class="card" onclick="vote('Iqbal')">Iqbal</div>
+            <div class="card" onclick="vote('Aqil')">Aqil</div>
+            <div class="card" onclick="vote('Ammar')">Ammar</div>
+            <div class="card" onclick="vote('Awal')">Awal</div>
+            <div class="card" onclick="vote('Alip')">Alip</div>
+            <div class="card" onclick="vote('Mika')">Mika</div>
+        </div>
+    </div>
+
+    <!-- SKRIN CARTA PENUTUP -->
+    <div id="chartScreen">
+        <h1 style="color: #ffcc00;">👑 CARTA RASMI PROBLEMATIC 👑</h1>
+        <p style="font-size: 0.5rem; color: #00ffcc; line-height: 1.4;">
+            SENARAI SUSPEK BERDASARKAN SEBERAPA BANYAK MEREKA KENA VOTE:
+        </p>
+
+        <div class="chart-list" id="chartList">
+            <!-- Hasil susunan otomatik akan muncul kat sini -->
+        </div>
+
+        <button onclick="restartGame()">🔄 MAIN SEMULA</button>
+    </div>
+
+</div>
+
+<script>
+    // Senarai Soalan Game
+    const questions = [
+        "Siapa paling tegar rembat hanger / towel orang lain?",
+        "Siapa paling susah nak bangun bila alarm bunyi pagi-pagi?",
+        "Siapa paling cepat licinkan Maggi/makanan orang lain?",
+        "Siapa paling berpotensi kena kantoi waktu spotcheck?",
+        "Siapa yang paling selalu membuang masa & tak nak study?"
+    ];
+
+    // Data Pungutan Markah (Markah asal 0)
+    let scores = {
+        'Amir': 0, 'Iqbal': 0, 'Aqil': 0, 
+        'Ammar': 0, 'Awal': 0, 'Alip': 0, 'Mika': 0
+    };
+
+    let currentQuestion = 0;
+
+    function loadQuestion() {
+        document.getElementById('progressText').innerText = `SOALAN ${currentQuestion + 1} / ${questions.length}`;
+        document.getElementById('soalanText').innerText = questions[currentQuestion];
+    }
+
+    function vote(name) {
+        // Tambah markah untuk nama yang dipilih
+        scores[name]++;
+
+        currentQuestion++;
+
+        // Jika soalan dah habis, tunjuk carta
+        if (currentQuestion >= questions.length) {
+            showChart();
+        } else {
+            loadQuestion();
+        }
+    }
+
+    function showChart() {
+        document.getElementById('gameScreen').style.display = 'none';
+        document.getElementById('chartScreen').style.display = 'block';
+
+        // Susun nama ikut markah tertinggi ke terendah
+        let sortedMembers = Object.keys(scores).sort((a, b) => scores[b] - scores[a]);
+
+        const chartList = document.getElementById('chartList');
+        chartList.innerHTML = '';
+
+        const badges = [
+            "KING OF PROBLEM 👑",
+            "SUSPEK TEGAR 🚨",
+            "ANCAMAN BILIK ⚠️",
+            "SUAM-SUAM KUKU ☕",
+            "MANGSA KEADAAN 😇",
+            "PENENANG BILIK 🕊️",
+            "BUDAK SYURGA 👼"
+        ];
+
+        sortedMembers.forEach((name, index) => {
+            const isTop1 = index === 0 ? 'top-1' : '';
+            const html = `
+                <div class="chart-item ${isTop1}">
+                    <span>#${index + 1} ${name}</span>
+                    <span>${scores[name]} Vote</span>
+                    <span class="badge">${badges[index]}</span>
+                </div>
+            `;
+            chartList.innerHTML += html;
+        });
+    }
+
+    function restartGame() {
+        // Reset semula markah
+        scores = { 'Amir': 0, 'Iqbal': 0, 'Aqil': 0, 'Ammar': 0, 'Awal': 0, 'Alip': 0, 'Mika': 0 };
+        currentQuestion = 0;
+        document.getElementById('gameScreen').style.display = 'block';
+        document.getElementById('chartScreen').style.display = 'none';
+        loadQuestion();
+    }
+
+    // Jalankan soalan pertama bila mula
+    loadQuestion();
+</script>
+
+</body>
+</html>
