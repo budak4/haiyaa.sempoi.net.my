@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ujian Problematic Bilik Asrama 🎮</title>
+    <!-- Font Pixel Minecraft Style -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body {
+            background-color: #2b0938;
+            font-family: 'Press Start 2P', cursive;
+            color: #ffffff;
+            text-align: center;
+            padding: 15px;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: #4a154b;
+            padding: 20px 15px;
+            border: 4px solid #ffcc00;
+            box-shadow: 6px 6px 0px #00ffff;
+            border-radius: 4px;
+            position: relative;
+        }
+
+        h1 {
+            color: #ff007f;
+            text-shadow: 3px 3px #00ffff;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            margin-top: 5px;
+        }
+
+        /* Progress Bar Minecraft Style */
+        .progress-box {
+            background: #1a0523;
+            border: 2px solid #000;
+            height: 16px;
+            width: 100%;
+            margin-bottom: 15px;
+            padding: 2px;
+        }
+
+        .progress-bar {
+            background: #00ffcc;
+            height: 100%;
+            width: 5%;
+            transition: width 0.3s ease;
+        }
+
+        .progress-text {
+            font-size: 0.5rem;
+            color: #ffcc00;
+            margin-bottom: 8px;
+        }
+
+        .soalan {
+            font-size: 0.6rem;
+            line-height: 1.6;
+            color: #ffffff;
+            background: #1a0523;
+            padding: 15px 10px;
+            border: 2px dashed #ff007f;
+            margin-bottom: 15px;
+            min-height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Pop-up Dialog Spontan */
+        .reaction-box {
+            font-size: 0.5rem;
+            color: #00ffcc;
+            height: 25px;
+            margin-bottom: 10px;
+            visibility: hidden;
+        }
+
+        /* Container Kad Ahli Bilik */
+        .cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .card {
+            background-color: #ff007f;
+            color: #ffffff;
+            padding: 12px 5px;
+            font-size: 0.65rem;
+            font-family: 'Press Start 2P', cursive;
+            border: 3px solid #000000;
+            box-shadow: 3px 3px 0px #00ffff;
+            cursor: pointer;
+            width: 30%;
+            text-align: center;
+            transition: transform 0.05s;
+        }
+
+        .card:active {
+            transform: scale(0.92);
+            background-color: #ffcc00;
+            color: #000;
+            box-shadow: 1px 1px 0px #00ffff;
+        }
+
+        /* Skrin Carta Penutup */
+        #chartScreen { display: none; }
+
+        .chart-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .chart-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #1a0523;
+            border: 2px solid #00ffcc;
+            padding: 10px;
+            font-size: 0.5rem;
+        }
+
+        .chart-item.top-1 {
+            background: #ff007f;
+            border-color: #ffcc00;
+            animation: pulse 0.8s infinite alternate;
+        }
+
+        .badge {
+            font-size: 0.4rem;
+            background: #ffcc00;
+            color: #000;
+            padding: 3px 5px;
+        }
+
+        button {
+            background: #00ffcc;
+            color: #000;
+            border: 3px solid #000;
+            padding: 12px;
+            font-size: 0.6rem;
+            font-family: 'Press Start 2P', cursive;
+            cursor: pointer;
+            box-shadow: 4px 4px 0px #ff007f;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        button:active {
+            transform: translate(2px, 2px);
+            box-shadow: 1px 1px 0px #ff007f;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.03); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    
+    <!-- SKRIN GAME UTAMA -->
+    <div id="gameScreen">
+        <h1>🚨 UJIAN PROBLEMATIC 🚨</h1>
+        
+        <div class="progress-text" id="progressText">SOALAN 1 / 20</div>
+        <div class="progress-box">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+        
+        <div class="soalan" id="soalanText">
+            Loading soalan...
+        </div>
+
+        <div class="reaction-box" id="reactionBox">LOG: Suspek dipilih!</div>
+
+        <div class="cards-container">
+            <div class="card" onclick="vote('Amir')">Amir</div>
+            <div class="card" onclick="vote('Iqbal')">Iqbal</div>
+            <div class="card" onclick="vote('Aqil')">Aqil</div>
+            <div class="card" onclick="vote('Ammar')">Ammar</div>
+            <div class="card" onclick="vote('Awal')">Awal</div>
+            <div class="card" onclick="vote('Alip')">Alip</div>
+            <div class="card" onclick="vote('Mika')">Mika</div>
+        </div>
+    </div>
+
+    <!-- SKRIN CARTA PENUTUP -->
+    <div id="chartScreen">
+        <h1 style="color: #ffcc00;">👑 CARTA RASMI PROBLEMATIC 👑</h1>
+        <p style="font-size: 0.45rem; color: #00ffcc; line-height: 1.4;">
+            RANKING MEREKA YANG PALING PROBLEMATIC BERDASARKAN UNDIAN:
+        </p>
+
+        <div class="chart-list" id="chartList">
+            <!-- Result auto-generated kat sini -->
+        </div>
+
+        <button onclick="restartGame()">🔄 MAIN SEMULA</button>
+    </div>
+
+</div>
+
+<script>
+    // Audio Effect Web Audio API (Tak perlukan fail luaran!)
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    
+    function playBeepSound() {
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'square';
+        osc.frequency.setValueAtTime(400, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(800, audioCtx.currentTime + 0.08);
+        gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.08);
+    }
+
+    function playWinSound() {
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(300, audioCtx.currentTime);
+        osc.frequency.setValueAtTime(500, audioCtx.currentTime + 0.1);
+        osc.frequency.setValueAtTime(800, audioCtx.currentTime + 0.2);
+        gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.4);
+    }
+
+    // 20 Soalan Problematic
+    const questions = [
+        "Siapa paling tegar rembat hanger / tuala orang lain tanpa izin?",
+        "Siapa paling susah nak bangun bila alarm bunyi jam 5:30 pagi?",
+        "Siapa paling cepat licinkan Maggi atau jajan orang lain dalam bilik?",
+        "Siapa paling berpotensi kena kantoi atau kalut time spotcheck?",
+        "Siapa yang paling selalu membuang masa & tak nak study bila exam dekat?",
+        "Siapa paling berkemungkinan mandi paling lama sampai orang lain beratur kat luar?",
+        "Siapa yang tuala/kain selimut dia selalu berselerak kat atas katil orang lain?",
+        "Siapa paling selalu pinjam baju/seluar kawan tapi simpan kat almari sendiri seminggu?",
+        "Siapa paling selalu cakap 'kejap lagi aku kemas', tapi sampai ke malam tak kemas?",
+        "Siapa paling pakar bab menyebarkan gossip/cerita panas pasal blok atau sekolah?",
+        "Siapa paling gempak bila plan nak lepak/outing, tapi time nak bayar terus lesap?",
+        "Siapa paling penakut bila lalu blok berhantu atau pantry malam-malam?",
+        "Siapa yang kalau tidur, bunyi dengkur atau mengigau dia paling kuat dalam bilik?",
+        "Siapa paling selalu kantoi simpan makanan/minuman terlarang kat dalam bilik?",
+        "Siapa yang bila pinjam cash/duit RM2, langsung tak pernah ingat nak pulangkan?",
+        "Siapa paling berkemungkinan kena denda jalan itik / kemas dewan makan dengan warden?",
+        "Siapa yang barang dia paling selalu hilang, padahal dia sendiri yang salah letak?",
+        "Siapa paling kuat tidur time prep malam atau time cikgu tengah mengajar?",
+        "Siapa paling dramatik bila terpaksa bangun pagi time hujan lebat?",
+        "Siapa yang secara rahsia sebenarnya 'King of Problem' sebenar dalam bilik ni?"
+    ];
+
+    let scores = { 'Amir': 0, 'Iqbal': 0, 'Aqil': 0, 'Ammar': 0, 'Awal': 0, 'Alip': 0, 'Mika': 0 };
+    let currentQuestion = 0;
+
+    function loadQuestion() {
+        document.getElementById('progressText').innerText = `SOALAN ${currentQuestion + 1} / ${questions.length}`;
+        document.getElementById('soalanText').innerText = questions[currentQuestion];
+        
+        // Kemaskini Progress Bar
+        let percentage = ((currentQuestion + 1) / questions.length) * 100;
+        document.getElementById('progressBar').style.width = `${percentage}%`;
+    }
+
+    function vote(name) {
+        playBeepSound();
+        scores[name]++;
+
+        // Reaksi pop-up pendek
+        const reactBox = document.getElementById('reactionBox');
+        reactBox.innerText = `💥 ${name} kena tuduh!`;
+        reactBox.style.visibility = 'visible';
+
+        currentQuestion++;
+
+        setTimeout(() => {
+            reactBox.style.visibility = 'hidden';
+            if (currentQuestion >= questions.length) {
+                showChart();
+            } else {
+                loadQuestion();
+            }
+        }, 300);
+    }
+
+    function showChart() {
+        playWinSound();
+        document.getElementById('gameScreen').style.display = 'none';
+        document.getElementById('chartScreen').style.display = 'block';
+
+        let sortedMembers = Object.keys(scores).sort((a, b) => scores[b] - scores[a]);
+
+        const chartList = document.getElementById('chartList');
+        chartList.innerHTML = '';
+
+        const badges = [
+            "KING OF PROBLEM 👑",
+            "SUSPEK TEGAR 🚨",
+            "ANCAMAN BILIK ⚠️",
+            "SUAM-SUAM KUKU ☕",
+            "MANGSA KEADAAN 😇",
+            "PENENANG BILIK 🕊️",
+            "BUDAK SYURGA 👼"
+        ];
+
+        sortedMembers.forEach((name, index) => {
+            const isTop1 = index === 0 ? 'top-1' : '';
+            const html = `
+                <div class="chart-item ${isTop1}">
+                    <span>#${index + 1} ${name}</span>
+                    <span style="color:#00ffcc;">${scores[name]} Vote</span>
+                    <span class="badge">${badges[index]}</span>
+                </div>
+            `;
+            chartList.innerHTML += html;
+        });
+    }
+
+    function restartGame() {
+        playBeepSound();
+        scores = { 'Amir': 0, 'Iqbal': 0, 'Aqil': 0, 'Ammar': 0, 'Awal': 0, 'Alip': 0, 'Mika': 0 };
+        currentQuestion = 0;
+        document.getElementById('gameScreen').style.display = 'block';
+        document.getElementById('chartScreen').style.display = 'none';
+        loadQuestion();
+    }
+
+    loadQuestion();
+</script>
+
+</body>
+</html>
